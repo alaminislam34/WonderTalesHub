@@ -103,7 +103,7 @@ jobs:
           target: ~/landingpage
 
       - name: Pull image and restart container
-        uses: appleboy/ssh-action@v1.2.0
+        uses: appleboy/ssh-action@v1.2.5
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
