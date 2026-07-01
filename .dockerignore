@@ -1,0 +1,14 @@
+node_modules
+dist
+dist-ssr
+.git
+.github
+.vscode
+.vercel
+*.log
+npm-debug.log*
+pnpm-debug.log*
+.env
+.env.*
+!example.env
+README.md

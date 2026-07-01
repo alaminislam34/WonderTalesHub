@@ -120,7 +120,7 @@ export default function BlogDetailPage() {
 
           // Bullet list block
           if (trimmed.startsWith('•') || trimmed.startsWith('-') || trimmed.startsWith('*')) {
-            const items = trimmed.split('\n').map(item => item.replace(/^[•\-\*]\s*/, '').trim())
+            const items = trimmed.split('\n').map(item => item.replace(/^[•\-*]\s*/, '').trim())
             return (
               <ul key={idx} className="space-y-4 my-6 list-none pl-0">
                 {items.map((item, i) => {

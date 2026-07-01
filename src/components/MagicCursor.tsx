@@ -14,13 +14,12 @@ export default function MagicCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [sparkles, setSparkles] = useState<Sparkle[]>([])
   const [isVisible, setIsVisible] = useState(false)
-  const [isTouchDevice, setIsTouchDevice] = useState(true)
+  const [isTouchDevice] = useState(
+    () => 'ontouchstart' in window || navigator.maxTouchPoints > 0
+  )
 
   useEffect(() => {
-    // Detect touch device
-    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0
-    setIsTouchDevice(isTouch)
-    if (isTouch) return
+    if (isTouchDevice) return
 
     // Hide default cursor on desktop
     document.body.classList.add('custom-cursor-active')
@@ -61,7 +60,7 @@ export default function MagicCursor() {
       document.removeEventListener('mouseleave', onMouseLeave)
       document.body.classList.remove('custom-cursor-active')
     }
-  }, [])
+  }, [isTouchDevice])
 
   // Animate the sparkling trails
   useEffect(() => {

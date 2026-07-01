@@ -45,7 +45,7 @@ export default function ScrollReveal({
   const getTransform = () => {
     if (isIntersecting) return 'translate(0, 0) scale(1)'
 
-    let translate = ''
+    let translate: string
     switch (direction) {
       case 'up':
         translate = 'translateY(40px)'

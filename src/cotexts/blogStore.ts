@@ -67,6 +67,15 @@ const getApiBase = () => {
 
 const API_BASE = getApiBase();
 
+type RawBlogPost = {
+  content?: string
+  excerpt?: string
+  tags_list?: string[]
+  updated_at?: string
+  image?: string
+  [key: string]: unknown
+}
+
 export const useBlogStore = create<BlogState>((set, get) => ({
   blogs: mockBlogs,
   activeBlog: null,
@@ -80,7 +89,7 @@ export const useBlogStore = create<BlogState>((set, get) => ({
       if (!res.ok) throw new Error('Failed to fetch blogs')
       const data = await res.json()
       if (data) {
-        const mapped = data.map((b: any) => ({
+        const mapped = data.map((b: RawBlogPost) => ({
           ...b,
           excerpt: b.content ? b.content.substring(0, 120) + '...' : b.excerpt || '',
           category: b.tags_list && b.tags_list.length > 0 ? b.tags_list[0] : 'Parenting',
@@ -95,8 +104,9 @@ export const useBlogStore = create<BlogState>((set, get) => ({
       } else {
         set({ blogs: [], loading: false })
       }
-    } catch (err: any) {
-      console.warn('API fetch failed, falling back to mock blogs:', err.message)
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err)
+      console.warn('API fetch failed, falling back to mock blogs:', message)
       set({ loading: false })
     }
   },
@@ -120,14 +130,15 @@ export const useBlogStore = create<BlogState>((set, get) => ({
       }
       set({ activeBlog: mapped, loading: false })
       return mapped
-    } catch (err: any) {
+    } catch (err) {
       // Fallback to mock blogs
       const mockFound = mockBlogs.find((item) => item.slug === slug)
       if (mockFound) {
         set({ activeBlog: mockFound, loading: false })
         return mockFound
       }
-      set({ loading: false, error: err.message })
+      const message = err instanceof Error ? err.message : String(err)
+      set({ loading: false, error: message })
       return null
     }
   },
