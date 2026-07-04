@@ -26,7 +26,7 @@ export default function Research() {
               link: "Read Study →",
             },
             {
-              stat: "1.5M",
+              stat: "1.4M",
               subtitle: "More words heard by age 5",
               desc: "Ohio State University researchers found children read to daily hear up to 1.4 million more words by kindergarten than children not read to.",
               ref: "Logan JA et al. — Ohio State University, 2019.",
@@ -70,7 +70,7 @@ export default function Research() {
 
                 {/* Link */}
                 <a
-                  href="#"
+                  href="/blogs"
                   className="mt-2 text-sm font-medium text-[#C8913A] hover:underline inline-block"
                 >
                   {c.link}

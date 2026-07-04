@@ -37,7 +37,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-4">
           <a
-            href="/#pricing"
+            href="/blogs"
             className="hidden sm:block rounded-md bg-linear-to-r from-orange-300 via-orange-400 to-orange-500 px-6 py-2.5 text-[13px] font-semibold text-white transition hover:opacity-90"
           >
             Try Free Story
@@ -70,7 +70,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="/#pricing"
+            href="/blogs"
             className="text-base font-medium text-orange-400 block py-3"
             onClick={() => setIsMobileMenuOpen(false)}
           >

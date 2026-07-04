@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import checkCircle from '../../assets/check-circle.svg'
 import ScrollReveal from './ScrollReveal'
-
-type Currency = 'USD' | 'EUR' | 'GBP'
+import {
+  detectUserCurrency,
+  saveCurrencyPreference,
+  type Currency,
+} from '../../utils/detectCurrency'
 
 const CURRENCY_SYMBOLS: Record<Currency, string> = {
   USD: '$',
@@ -79,50 +82,103 @@ const SINGLE_PRICES: Record<Currency, { ai: string; voice: string }> = {
 
 export default function Pricing() {
   const [currency, setCurrency] = useState<Currency>('USD')
+  const [detectionSource, setDetectionSource] = useState<
+    'storage' | 'locale' | 'ip' | 'default' | null
+  >(null)
+
+  // Auto-detect on mount
+  useEffect(() => {
+    let cancelled = false
+    detectUserCurrency().then(({ currency: detected, source }) => {
+      if (!cancelled) {
+        setCurrency(detected)
+        setDetectionSource(source)
+      }
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  const handleCurrencyChange = (c: Currency) => {
+    setCurrency(c)
+    saveCurrencyPreference(c)
+    setDetectionSource('storage')
+  }
 
   return (
     <section id="pricing" className="px-6 py-24 lg:px-8">
       <div className="mx-auto max-w-360 w-11/12 text-center">
         <ScrollReveal direction="up">
-          <p className="text-xs font-semibold text-gold tracking-widest uppercase">Choose Your Plan</p>
+          <p className="text-xs font-semibold text-gold tracking-widest uppercase">
+            Choose Your Plan
+          </p>
           <h2 className="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
-            Choose The Right<br /><span className="text-gold">Plan for You</span>
+            Choose The Right<br />
+            <span className="text-gold">Plan for You</span>
           </h2>
 
           {/* Currency Selector */}
-          <div className="mt-8 flex items-center justify-center gap-2">
-            {(['USD', 'EUR', 'GBP'] as Currency[]).map((c) => (
-              <button
-                key={c}
-                onClick={() => setCurrency(c)}
-                className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all ${
-                  currency === c
+          <div className="mt-8 flex flex-col items-center justify-center gap-2">
+            <div className="flex items-center gap-2">
+              {(['USD', 'EUR', 'GBP'] as Currency[]).map((c) => (
+                <button
+                  key={c}
+                  onClick={() => handleCurrencyChange(c)}
+                  className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all ${currency === c
                     ? 'bg-gold text-navy-950'
                     : 'border border-white/20 text-white/70 hover:text-white hover:border-white/40'
-                }`}
-              >
-                {c} {CURRENCY_SYMBOLS[c]}
-              </button>
-            ))}
+                    }`}
+                >
+                  {c} {CURRENCY_SYMBOLS[c]}
+                </button>
+              ))}
+            </div>
+            {detectionSource && detectionSource !== 'default' && (
+              <p className="text-[10px] text-white/40 mt-1">
+                Prices shown in{' '}
+                <span className="text-white/60">
+                  {currency} ({CURRENCY_SYMBOLS[currency]})
+                </span>{' '}
+                based on your{' '}
+                {detectionSource === 'storage'
+                  ? 'previous selection'
+                  : detectionSource === 'locale'
+                    ? 'browser language'
+                    : 'location'}
+              </p>
+            )}
           </div>
         </ScrollReveal>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-3 max-w-5xl mx-auto">
           {PLANS.map((p, index) => (
             <ScrollReveal key={p.name} delay={index * 150} scale>
-              <div className={`relative rounded-2xl p-8 text-left ${p.bg} ${p.glow} border ${p.borderClass} hover:scale-[1.02] transition-all duration-300 h-full flex flex-col`}>
+              <div
+                className={`relative rounded-2xl p-8 text-left ${p.bg} ${p.glow} border ${p.borderClass} hover:scale-[1.02] transition-all duration-300 h-full flex flex-col`}
+              >
                 {p.badge && (
-                  <div className={`absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap px-4 py-1 rounded-full text-[10px] font-bold tracking-widest ${p.badge === 'MOST POPULAR' ? 'bg-gold text-navy-950' : 'bg-white/15 text-white border border-white/20'}`}>
+                  <div
+                    className={`absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap px-4 py-1 rounded-full text-[10px] font-bold tracking-widest ${p.badge === 'MOST POPULAR'
+                      ? 'bg-gold text-navy-950'
+                      : 'bg-white/15 text-white border border-white/20'
+                      }`}
+                  >
                     {p.badge}
                   </div>
                 )}
 
                 <p className="text-base font-semibold text-white">{p.name}</p>
                 <p className="mt-3 font-bold text-white text-4xl leading-none">
-                  {CURRENCY_SYMBOLS[currency]}{p.prices[currency]}
-                  <span className="text-[11px] font-medium text-white/70 ml-1">/mo</span>
+                  {CURRENCY_SYMBOLS[currency]}
+                  {p.prices[currency]}
+                  <span className="text-[11px] font-medium text-white/70 ml-1">
+                    /mo
+                  </span>
                 </p>
-                <p className="mt-2 text-xs font-medium text-gold">{p.storySummary}</p>
+                <p className="mt-2 text-xs font-medium text-gold">
+                  {p.storySummary}
+                </p>
 
                 <ul className="mt-6 space-y-3 flex-1">
                   {p.special && (
@@ -132,8 +188,15 @@ export default function Pricing() {
                     </li>
                   )}
                   {p.features.map((f) => (
-                    <li key={f} className="flex items-start gap-3 text-xs text-white/90 font-light">
-                      <img src={checkCircle} alt="" className="w-4 h-4 mt-0.5 shrink-0" />
+                    <li
+                      key={f}
+                      className="flex items-start gap-3 text-xs text-white/90 font-light"
+                    >
+                      <img
+                        src={checkCircle}
+                        alt=""
+                        className="w-4 h-4 mt-0.5 shrink-0"
+                      />
                       {f}
                     </li>
                   ))}
@@ -153,11 +216,25 @@ export default function Pricing() {
         {/* Single Story Prices */}
         <ScrollReveal direction="up" delay={300}>
           <div className="mt-10 inline-flex flex-col sm:flex-row items-center gap-3 sm:gap-5 rounded-2xl border border-white/10 bg-white/5 px-8 py-5 text-sm text-white/80">
-            <span className="font-semibold text-white">Or buy single stories:</span>
+            <span className="font-semibold text-white">
+              Or buy single stories:
+            </span>
             <span className="hidden sm:block text-white/30">|</span>
-            <span>AI Story — <span className="text-white font-medium">{SINGLE_PRICES[currency].ai}</span> each</span>
+            <span>
+              AI Story —{' '}
+              <span className="text-white font-medium">
+                {SINGLE_PRICES[currency].ai}
+              </span>{' '}
+              each
+            </span>
             <span className="hidden sm:block text-white/30">|</span>
-            <span>Family Voice Story — <span className="text-white font-medium">{SINGLE_PRICES[currency].voice}</span> each</span>
+            <span>
+              Family Voice Story —{' '}
+              <span className="text-white font-medium">
+                {SINGLE_PRICES[currency].voice}
+              </span>{' '}
+              each
+            </span>
           </div>
           <p className="mt-5 text-sm font-medium text-gold">
             Try 1 story free — no credit card required

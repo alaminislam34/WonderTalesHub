@@ -3,10 +3,6 @@ import storeButtons from "../../assets/google and apple playstore.svg";
 import bookIcon from "../../assets/Book.svg";
 import booksIcon from "../../assets/Books.svg";
 import aiMicIcon from "../../assets/AI Mic.svg";
-import avatarUser1 from "../../assets/avatar1.svg";
-import avatarUser2 from "../../assets/avatar2.svg";
-import avatarUser3 from "../../assets/avatar3.svg";
-import avatarUser4 from "../../assets/avatar4.svg";
 
 export default function HeroSection() {
   return (
@@ -14,7 +10,7 @@ export default function HeroSection() {
       <img
         src={heroImage}
         alt=""
-        className="absolute inset-0 w-full h-full object-cover object-top z-0 pointer-events-none"
+        className="absolute object-[75%] inset-0 w-full h-full object-cover lg:object-top z-0 pointer-events-none"
       />
 
       <div className="absolute inset-0 bg-linear-to-br from-navy-950/10 via-navy-700/10 to-navy-900/10 z-0" />
@@ -50,40 +46,24 @@ export default function HeroSection() {
             />
           </div>
 
-          {/* Avatars */}
           {/* Research Banner */}
-          <div className="border-2 border-[#FFFFFF33] backdrop-blur-[2px] bg-[#ffffff0c] rounded-2xl px-6 py-5 flex items-center gap-5">
-            {/* Avatars */}
-            <div className="flex -space-x-3 shrink-0">
-              {[avatarUser1, avatarUser2, avatarUser3, avatarUser4].map(
-                (src, i) => (
-                  <img
-                    key={i}
-                    src={src}
-                    alt=""
-                    className="h-12 w-12 rounded-full border-2 border-white bg-navy-800 object-cover"
-                  />
-                ),
-              )}
-            </div>
-
-            {/* Text */}
+          <div className="border-2 border-[#FFFFFF33] backdrop-blur-[2px] bg-[#ffffff0c] rounded-2xl p-2 md:px-6 md:py-5">
             <p className="text-[15px] text-white font-light leading-snug">
-              Built on peer-reviewed research from 5 studies {" "}
-              <span className="text-orange-400 font-medium">5 studies</span>{" "}
-              across the university on Pennsylvania, Ohio State and Springer Nature.
+              Built on peer-reviewed research from{" "}
+              <span className="text-orange-400 font-medium">3 studies</span>{" "}
+              across the University of Pennsylvania, Ohio State, and Springer Nature.
             </p>
           </div>
         </div>
       </div>
 
       {/* ===== FEATURES STRIP ===== */}
-      <div className="relative z-20 mx-auto w-11/12 max-w-360 mt-16">
-        <div className="rounded-3xl border-2 border-[#FFFFFF33] backdrop-blur-[2px] bg-[#ffffff0c] p-8 md:p-12 shadow-2xl overflow-hidden">
+      <div className="relative z-20 mx-auto w-11/12 max-w-360 md:mt-16 mt-8">
+        <div className="rounded-3xl border-2 border-[#FFFFFF33] backdrop-blur-[2px] bg-[#ffffff0c] p-6 md:p-8 lg:p-12 shadow-2xl overflow-hidden">
           {/* Subtle background glow effect */}
           <div className="absolute inset-0 "></div>
 
-          <div className="relative grid gap-12 md:grid-cols-3 md:divide-x divide-white/10">
+          <div className="relative grid gap-6 md:gap-8 lg:gap-12 md:grid-cols-3 md:divide-x divide-white/10">
             {[
               {
                 icon: bookIcon,
