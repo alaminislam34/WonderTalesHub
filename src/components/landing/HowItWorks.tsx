@@ -31,8 +31,8 @@ export default function HowItWorks() {
           <div className="grid gap-8 sm:grid-cols-3 pb-12 md:pb-0 mt-8">
             {[
               { icon: icon1, title: 'Create Your Child', desc: 'Create or select profile to personalize their story.' },
-              { icon: icon2, title: 'Create Story', desc: 'Choose a theme, length & Voice to generate a story.' },
-              { icon: icon3, title: 'Listen & Enjoy', desc: 'Sit back, relax & enjoy magical story anytime anywere.' },
+              { icon: icon2, title: 'Create Story', desc: 'Choose a theme, length and voice to generate a story.' },
+              { icon: icon3, title: 'Listen and Enjoy', desc: 'Sit back, relax and enjoy a magical story anytime anywhere.' },
             ].map((s, index) => (
               <ScrollReveal key={s.title} delay={index * 150} scale>
                 <div className="relative rounded-2xl border border-white/10 bg-linear-to-b from-[#E89C30]/20 to-[#FFDBA8]/20 pt-12 pb-6 px-6 text-left hover:border-gold/40 hover:shadow-xl hover:shadow-gold/5 transition-all duration-300 h-full">
@@ -40,7 +40,7 @@ export default function HowItWorks() {
                     <img src={s.icon} alt="" className="w-full h-full object-contain" />
                   </div>
                   <h3 className="text-base font-semibold text-gold mt-1">{s.title}</h3>
-                  <p className="mt-2 text-xs text-white/70 font-light leading-relaxed">{s.desc}</p>
+                  <p className="mt-2 text-xs text-white/70 font-normal leading-relaxed">{s.desc}</p>
                 </div>
               </ScrollReveal>
             ))}

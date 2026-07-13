@@ -16,7 +16,7 @@ const WAVE_BARS: [number, string, string][] = [
 
 const ROLE_CARDS = [
   { emoji: '👱‍♀️', title: 'Mom', desc: 'Always there' },
-  { emoji: '👨', title: 'Dad', desc: 'Even travelling' },
+  { emoji: '👨', title: 'Dad', desc: 'Even traveling' },
   { emoji: '👵', title: 'Grandma', desc: 'From anywhere' },
   { emoji: '👴', title: 'Grandpa', desc: 'Every night' },
 ]
@@ -38,8 +38,8 @@ export default function VoiceClone() {
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
               Clone Your Voice in Seconds
             </h2>
-            <p className="text-sm sm:text-base text-white/70 font-light leading-relaxed">
-              Record 2 minutes of any family member's voice and they narrate a brand- new personalized story every single night. Grandma from across the world. Dad on a work trip. Always there at bedtime.
+            <p className="text-sm sm:text-base text-white/70 font-normal leading-relaxed">
+              Record 2 minutes of any family member's voice and they narrate a brand-new personalized story every single night. Grandma from across the world. Dad on a work trip. Always there at bedtime.
             </p>
           </div>
 
@@ -66,7 +66,7 @@ export default function VoiceClone() {
               >
                 <span className="text-4xl mb-3 filter drop-shadow-md select-none">{card.emoji}</span>
                 <h3 className="text-sm font-semibold text-gold">{card.title}</h3>
-                <p className="mt-1 text-[11px] text-white/60 font-light">{card.desc}</p>
+                <p className="mt-1 text-[11px] text-white/60 font-normal">{card.desc}</p>
               </div>
             ))}
           </div>

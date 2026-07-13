@@ -11,7 +11,7 @@ export default function BlogsPage() {
   }, [fetchBlogs])
 
   return (
-    <div className="relative min-h-[80vh] pt-32 pb-24  overflow-hidden animate-fade-in-up">
+    <div className="relative min-h-[80vh] pt-32 pb-24  overflow-hidden">
       {/* Soft, premium radial glow at the top center, matching the mockup's light effect */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-[400px] bg-blue-600/10 rounded-full blur-3xl pointer-events-none -z-10" />
       <div className="absolute top-[10%] left-[10%] w-[350px] h-[350px] bg-indigo-600/5 rounded-full blur-3xl pointer-events-none -z-10" />

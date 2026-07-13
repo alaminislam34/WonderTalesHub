@@ -40,7 +40,7 @@ export default function BlogDetailPage() {
 
     return () => {
       // Restore default title on unmount
-      document.title = 'WonderTales Hub'
+      document.title = 'Wonder Tales Hub'
     }
   }, [activeBlog])
 

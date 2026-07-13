@@ -19,7 +19,7 @@ export default function HeroSection() {
         <div className="max-w-2xl space-y-6">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-4 py-1.5 backdrop-blur-sm">
             <span className="text-gold text-lg leading-none">✨</span>
-            <span className="text-xs text-white/80 font-light tracking-wider">
+            <span className="text-xs text-white/80 font-normal tracking-wider">
               Personalized · Family-Narrated
             </span>
           </div>
@@ -48,7 +48,7 @@ export default function HeroSection() {
 
           {/* Research Banner */}
           <div className="border-2 border-[#FFFFFF33] backdrop-blur-[2px] bg-[#ffffff0c] rounded-2xl p-2 md:px-6 md:py-5">
-            <p className="text-[15px] text-white font-light leading-snug">
+            <p className="text-[15px] text-white font-normal leading-snug">
               Built on peer-reviewed research from{" "}
               <span className="text-orange-400 font-medium">3 studies</span>{" "}
               across the University of Pennsylvania, Ohio State, and Springer Nature.
@@ -63,7 +63,7 @@ export default function HeroSection() {
           {/* Subtle background glow effect */}
           <div className="absolute inset-0 "></div>
 
-          <div className="relative grid gap-6 md:gap-8 lg:gap-12 md:grid-cols-3 md:divide-x divide-white/10">
+          <div className="relative grid gap-6 md:gap-8 lg:gap-12 md:grid-cols-3 md:divide-x-2 divide-white/30">
             {[
               {
                 icon: bookIcon,
@@ -73,7 +73,7 @@ export default function HeroSection() {
               {
                 icon: aiMicIcon,
                 title: "Your Voice, Their Story",
-                desc: "Clone your voice & narrate their adventure",
+                desc: "Clone your voice and narrate their adventure",
               },
               {
                 icon: booksIcon,
@@ -97,7 +97,7 @@ export default function HeroSection() {
                   <h3 className="text-xl font-semibold text-amber-400 mb-2">
                     {f.title}
                   </h3>
-                  <p className="text-sm text-gray-300 font-light leading-relaxed max-w-xs">
+                  <p className="text-sm text-white font-normal leading-relaxed max-w-xs">
                     {f.desc}
                   </p>
                 </div>

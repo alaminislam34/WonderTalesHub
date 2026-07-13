@@ -36,7 +36,7 @@ export default function Testimonials() {
           <h2 className="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl text-white leading-tight uppercase">
             BUILT FOR <span className="text-gold">REAL FAMILIES</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-base text-white/70 font-light leading-relaxed">
+          <p className="mx-auto mt-6 max-w-xl text-base text-white/70 font-normal leading-relaxed">
             Wonder Tales Hub was built with one goal: making bedtime magical for every family, no matter where you are.
           </p>
         </ScrollReveal>
@@ -47,7 +47,7 @@ export default function Testimonials() {
               <div className="flex flex-col h-full rounded-2xl border border-white/10 bg-[#14195a] p-8 transition-all duration-300 hover:border-gold/40 hover:shadow-xl hover:shadow-gold/5 text-left">
                 <span className="text-4xl mb-4 select-none">{item.emoji}</span>
                 <h3 className="text-base font-semibold text-gold mb-3">{item.heading}</h3>
-                <p className="text-base text-white/80 font-light leading-relaxed flex-1">
+                <p className="text-base text-white/80 font-normal leading-relaxed flex-1">
                   {item.scenario}
                 </p>
               </div>

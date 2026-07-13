@@ -22,7 +22,7 @@ export default function CTA() {
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-white leading-[1.15]">
             Start Your Child’s Magical Journey Tonight
           </h2>
-          <p className="text-sm sm:text-base text-white/70 font-light max-w-md leading-relaxed">
+          <p className="text-sm sm:text-base text-white/70 font-normal max-w-md leading-relaxed">
             Download the app and create unforgettable bedtime memories.
           </p>
           <div className="pt-4 flex justify-start">

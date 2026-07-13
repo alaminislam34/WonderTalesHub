@@ -11,8 +11,8 @@ export default function Research() {
           <h2 className="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl text-white leading-tight uppercase">
             THE RESEARCH <span className="text-gold">IS CLEAR</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-base text-white/70 font-light leading-relaxed">
-            Wonder Tales Hub doesn’t just entertain it builds habits and skills that science has proven matter.
+          <p className="mx-auto mt-6 max-w-xl text-base text-white/70 font-normal leading-relaxed">
+            Wonder Tales Hub doesn’t just entertain — it builds habits and skills that science has proven matter.
           </p>
         </ScrollReveal>
 
@@ -56,7 +56,7 @@ export default function Research() {
                 </p>
 
                 {/* Description */}
-                <p className="mt-6 text-sm text-white/50 font-light leading-relaxed grow">
+                <p className="mt-6 text-sm text-white/50 font-normal leading-relaxed grow">
                   {c.desc}
                 </p>
 
@@ -64,7 +64,7 @@ export default function Research() {
                 <div className="mt-6 mb-4 border-t border-white/20 w-full" />
 
                 {/* Reference */}
-                <p className="text-xs text-gray-400 font-light leading-relaxed">
+                <p className="text-xs text-gray-400 font-normal leading-relaxed">
                   {c.ref}
                 </p>
 

@@ -19,7 +19,7 @@ export default function Navbar() {
         <NavLink to="/" className="flex items-center gap-3">
           <img src={logoIcon} alt="" className="h-10 object-contain" />
           <span className="text-xl font-serif tracking-wide">
-            <span className="text-gold">WonderTales</span> <span className="text-white">Hub</span>
+            <span className="text-gold">Wonder Tales</span> <span className="text-white">Hub</span>
           </span>
         </NavLink>
 

@@ -23,8 +23,8 @@ const PLANS = [
     features: [
       '8 AI-narrated stories / month',
       'Up to 4 child profiles',
-      'All story themes & durations',
-      'Save & replay',
+      'All story themes and durations',
+      'Save and replay',
       'Cancel anytime',
     ],
     bg: 'bg-[#0d114f]/80 backdrop-blur-sm',
@@ -190,7 +190,7 @@ export default function Pricing() {
                   {p.features.map((f) => (
                     <li
                       key={f}
-                      className="flex items-start gap-3 text-xs text-white/90 font-light"
+                      className="flex items-start gap-3 text-xs text-white/90 font-normal"
                     >
                       <img
                         src={checkCircle}

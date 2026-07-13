@@ -50,17 +50,17 @@ const mockBlogs: BlogPost[] = [
 
 const getApiBase = () => {
   const hostname = typeof window !== 'undefined' ? window.location.hostname : '';
-  
+
   // If we are running on localhost, use the env var or default to localhost:8000
   if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '') {
     return import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
   }
-  
+
   // If we are in production, use the production API domain
   if (hostname.includes('wondertaleshub.com')) {
     return 'https://api.wondertaleshub.com';
   }
-  
+
   // Dynamic fallback for any other production domains
   return `https://api.${hostname}`;
 };
@@ -88,7 +88,7 @@ export const useBlogStore = create<BlogState>((set, get) => ({
       const res = await fetch(`${API_BASE}/v1/blogs/`)
       if (!res.ok) throw new Error('Failed to fetch blogs')
       const data = await res.json()
-      if (data) {
+      if (data && data.length > 0) {
         const mapped = data.map((b: RawBlogPost) => ({
           ...b,
           excerpt: b.content ? b.content.substring(0, 120) + '...' : b.excerpt || '',
@@ -102,12 +102,12 @@ export const useBlogStore = create<BlogState>((set, get) => ({
         }))
         set({ blogs: mapped, loading: false })
       } else {
-        set({ blogs: [], loading: false })
+        set({ blogs: mockBlogs, loading: false })
       }
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err)
       console.warn('API fetch failed, falling back to mock blogs:', message)
-      set({ loading: false })
+      set({ blogs: mockBlogs, loading: false })
     }
   },
 

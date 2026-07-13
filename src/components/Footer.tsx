@@ -9,18 +9,18 @@ export default function Footer() {
       <div className="mx-auto w-11/12 max-w-360">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-10">
           <div className="flex items-center justify-center md:justify-start">
-            <img src={logoIcon} alt="WonderTales Hub" className="h-32 object-contain" />
+            <img src={logoIcon} alt="Wonder Tales Hub" className="h-32 object-contain" />
           </div>
-          <div className="space-y-3 text-[14px] text-white/95 font-light text-center md:text-right pb-4">
-            <p>Contact E-mail: <a href="mailto:info@wondertaleshub.com" className="underline hover:text-gold transition">info@wondertaleshub.com</a></p>
-            <p>Support E-mail: <a href="mailto:info@wondertaleshub.com" className="underline hover:text-gold transition">info@wondertaleshub.com</a></p>
+          <div className="space-y-3 text-[14px] text-white/95 font-normal text-center md:text-right pb-4">
+            <p>Contact: <a href="mailto:info@wondertaleshub.com" className="underline hover:text-gold transition">info@wondertaleshub.com</a></p>
+            <p>Support: <a href="mailto:info@wondertaleshub.com" className="underline hover:text-gold transition">info@wondertaleshub.com</a></p>
           </div>
         </div>
 
         <hr className="my-8 border-white/10" />
 
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-          <div className="text-[13px] text-white/50 font-light space-y-1 text-center sm:text-left">
+          <div className="text-[13px] text-white/50 font-normal space-y-1 text-center sm:text-left">
             <p>© 2026 Wonder Tales Hub, Inc. All rights reserved.</p>
             <p className="text-white/40 text-[12px]">Wonder Tales Hub is COPPA-compliant. No children's personal data is collected without parental consent.</p>
           </div>
