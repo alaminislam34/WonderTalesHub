@@ -7,7 +7,7 @@ const navItems = [
   { label: 'How It Works', href: '/#how-it-works' },
   { label: 'Voice', href: '/#voice' },
   { label: 'Pricing', href: '/#pricing' },
-  { label: 'Blog', href: '/blogs', highlight: false },
+  { label: 'Blogs', href: '/blogs', highlight: false },
 ]
 
 export default function Navbar() {
