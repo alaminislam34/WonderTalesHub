@@ -22,22 +22,22 @@ export default function Research() {
               stat: "+1HR",
               subtitle: "More sleep every night",
               desc: "A landmark study of 10,085 families across 14 countries found children with a consistent nightly bedtime routine sleep over an hour more per night.",
-              ref: "Mindell et – Journal Sleep, 2015.",
-              link: "Read Study →",
+              ref: "Mindell et al. — Sleep, 2015,",
+              link: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4402657/",
             },
             {
               stat: "1.4M",
               subtitle: "More words heard by age 5",
               desc: "Ohio State University researchers found children read to daily hear up to 1.4 million more words by kindergarten than children not read to.",
               ref: "Logan JA et al. — Ohio State University, 2019.",
-              link: "Read Study →",
+              link: "https://news.osu.edu/a-million-word-gap-for-children-who-arent-read-to-at-home/",
             },
             {
               stat: "3 IN 1",
               subtitle: "Sleep + Literacy + Bonding",
               desc: "A review in Sleep Medicine Reviews found bedtime routines benefit not just sleep, but child literacy outcomes, emotional regulation, and parent-child bonding.",
               ref: "Mindell & Williamson — Sleep Medicine Reviews, 2018.",
-              link: "Read Study →",
+              link: "https://pubmed.ncbi.nlm.nih.gov/29195725/",
             },
           ].map((c, index) => (
             <ScrollReveal key={c.stat} delay={index * 150} scale>
@@ -69,12 +69,16 @@ export default function Research() {
                 </p>
 
                 {/* Link */}
-                <a
-                  href="/blogs"
-                  className="mt-2 text-sm font-medium text-[#C8913A] hover:underline inline-block"
-                >
-                  {c.link}
-                </a>
+                {c.link && (
+                  <a
+                    href={c.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 text-sm font-medium text-[#C8913A] hover:underline inline-block"
+                  >
+                    Read Study →
+                  </a>
+                )}
               </div>
             </ScrollReveal>
           ))}
