@@ -28,23 +28,29 @@ const mockBlogs: BlogPost[] = [
   },
   {
     slug: 'dream-weaver-guide',
-    title: 'Dream Weaver\'s Guide: Crafting Magical Bedtime Stories',
+    title: "How to Invent a Bedtime Story on the Spot (Even When You're Exhausted)",
     excerpt: 'Learn how to shape characters, set a gentle tone, and keep adventures calm enough for sleepy imaginations.',
-    category: 'Storytelling',
+    category: 'STORY FORMULAS',
     date: 'May 14, 2026',
     image: coverDreamWeaver,
     content:
-      'Discover how to craft bedtime stories that feel enchanted yet soothing. The Dream Weaver\'s Guide helps parents balance wonder with rest, keeping every tale simple, kind, and easy to follow.',
+      `Who, where, uh-oh, how. The four-question formula that turns "tell me
+one from your head" into ten minutes of magic — and the cliffhanger
+trick that makes kids want to go to bed.`,
   },
   {
     slug: 'enchanting-night-tales',
     title: 'Enchanting Night Tales: Unleash Your Child\'s Imagination',
-    excerpt: 'Create stories that spark curiosity and comfort with gentle heroes, warm worlds, and a calm ending every night.',
-    category: 'Imagination',
+    excerpt: `An hour more sleep. 1.4 million more words by kindergarten. Stronger
+bonds. A plain-English tour of the studies behind the humble bedtime
+story — with sources.`,
+    category: 'THE SCIENCE',
     date: 'May 12, 2026',
     image: coverNightTales,
     content:
-      'Bedtime stories that invite your child into a soft, imaginative world can make the difference between restless nights and restful sleep. Use familiar themes, kind characters, and clear story arcs to keep every adventure bright and reassuring.',
+      `An hour more sleep. 1.4 million more words by kindergarten. Stronger
+bonds. A plain-English tour of the studies behind the humble bedtime
+story — with sources.`,
   },
 ]
 
